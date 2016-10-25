@@ -1,0 +1,19 @@
+{% extends "portfolio/base.html" %}
+{% block project %}
+<header class="bp-header cf">
+	<h1 class="bp-header__title">Projects</h1>
+	<h4 class="bp-header__desc">Some stuff i've made and workin on</h4>
+</header>
+<div class="main">
+<ul id="og-grid" class="og-grid">
+	{% for lat in latihan %}
+	<li>
+		<a href="{{ lat.url }}" data-largesrc="{{ lat.image.url }}" data-title="{{ lat.title }}" data-description="{{ lat.description }}">
+			<img src="{{ lat.image.url }}" class="img-rounded" height=160 width=250 alt="{{ lat.title }}"/>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+</div>	
+
+{% endblock %}

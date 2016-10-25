@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Perpustakaan</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--CSS bootstrap link dokumentasi = http://getbootstrap.com/css/ -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Library</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	{% if user.is_authenticated %}
+	<ul class="nav navbar-nav navbar-right">
+		    <h6>Hello {{ user.username }}!</h6>
+                    <a href="/buku2/logout/"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>
+                </ul>
+	{% else %}
+	<ul class="nav navbar-nav navbar-right">
+                    <a href="/buku2/login/"><button type="button" class="btn btn-default navbar-btn">Login</button></a>
+                    <a href="/buku2/register/"><button type="button" class="btn btn-primary navbar-btn">Register</button></a>
+                </ul>
+	{% endif %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/buku2/category/Komik/">Komik</a></li>
+                            <li><a href="/buku2/category/Magazine/">Magazine</a></li>
+                            <li><a href="/buku2/category/Novel/">Novel</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+     <div class ="jumbotron" style="color:#8080FF">
+     <h1 style="color:#000000">Welcome to Vicky's Library</h1>
+	</div>
+	<p>These are available categories</p>
+        {% if categories %}
+	 
+            <ul>
+                {% for category in categories %}
+                <li><a href="/buku2/category/{{ category.name }}">{{category.name}}</a></li>
+		<a href="/buku2/add_book/category/{{ category.name }}/"><button type="button" class="btn btn-default">Add a New Book</button></a><br />
+
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+
+	<br><a href="/buku2/add_category/"><button type="button" class="btn btn-default">Add a New Category</button></a><br />
+       
+
+
+    <!-- Script bootstrap link dokumentasi = http://getbootstrap.com/javascript/ -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</body>
+
+</html>
