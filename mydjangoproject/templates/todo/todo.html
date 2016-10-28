@@ -1,13 +1,17 @@
-{% load staticfiles %}
+{% extends "todo/base.html" %}
+
 <!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>To Do Apps</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static "css/todo.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/todo.css' %}" />
 </head>
 <body>
+{% block content %}
 
 <h1 align="center">Do the lists</h1>
 <table align="center">
@@ -26,6 +30,7 @@
   </tr>
   {% endfor %}
 </table>
+{% endblock content %}
 
 </body>
 </html>
