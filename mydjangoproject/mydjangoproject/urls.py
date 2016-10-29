@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^', include('portfolio.urls', namespace='portfolio')),
     url(r'^todo/', include('todo.urls')),
     url(r'^library/', include('library.urls')),
-    url(r'^blog/', include('blog.urls')),
+    url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^polls/', include('polls.urls', namespace='polls')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
     #url(r'^blog/$', "<appname>.views.<functionname>"),

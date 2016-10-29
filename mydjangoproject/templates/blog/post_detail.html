@@ -1,14 +1,19 @@
-<!--DOCTYPE HTML-->
-<html>
-<body>
-	<h1>{{ title }}</h1>
+{% extends "blog/base.html" %}
 
-{{ instance.title }}<br/>
-{{ instance.content }}<br/>
-{{ instance.timestamp }}<br/>
-{{ instance.updated }}<br/>
-{{ instance.id }}<br/>
+{% block head_title %}{{ instance.title }} | {{ block.super }}{% endblock head_title %}
 
-</body>
+{% block content %}
 
-</html>
+<div class='col-sm-6 col-sm-offset-3'>
+	{% if instance.image %}
+	<img src='{{ instance.image.url }}' class='img-responsive'/>
+	{% endif %}
+<h1>{{ title }} <small>{% if instance.draft %}<span style='color:red;'>Draft </span>{% endif %}{{ instance.publish }}</small></h1>
+<p>Author: {{ instance.user }}</p>
+
+{{ instance.content|linebreaks }}<br/>
+
+
+</div>
+
+{% endblock content %}
