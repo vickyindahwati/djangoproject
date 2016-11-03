@@ -89,7 +89,7 @@
             <div class="col-md-4 portfolio-item">
                 
                 <a href="#">
-                    <img class="img-responsive" src="{{ pic.picture.url }}"  height=700px width =400px alt="{{ pic.name }}"/>
+                    <img class="img-responsive" src="{{ pic.picture.url }}" data-toggle="modal" data-target="#myModal{{ pic.id }}"  height=700px width =400px alt="{{ pic.name }}"/>
                 </a>
                 <h3>
                     <a href="#">{{ pic.name }}</a>
@@ -101,6 +101,27 @@
             
         <hr>
 
+        <!-- Modal -->
+        {% for pic in photos %}
+<div class="modal fade" id="myModal{{ pic.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="center"><img  src="{{ pic.picture.url }}"></div>
+      </div>
+      <div class="modal-body">
+      <p><h3>{{ pic.name }}</h3></p>
+        {{ pic.description }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+        {% endfor %}
         <!-- Pagination -->
         <!--<div class="row text-center">
             <div class="col-lg-12">

@@ -1,12 +1,14 @@
 {% extends "todo/base.html" %}
 
-{% block head_title %}Result | {{ question.question_text }}{% endblock head_title %}
+{% block title %}Result | {{ question.question_text }}{% endblock %}
+
 
 {% block post_detail_link %}
 <li><a href='{% url "polls:index" %}'>Polls</a></li>
 <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 <li>result</li>
 {% endblock %}
+
 {% block content %}
 <div class='col-sm-6 col-sm-offset-3'>
   <h1>{{ question.question_text }}</h1>
@@ -35,7 +37,7 @@
 </div>
 
 
-{% endblock content %}	
+{% endblock %}	
 
 {% block script_extra %} 
 <script src="https://code.highcharts.com/highcharts.js"></script>
